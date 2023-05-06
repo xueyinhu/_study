@@ -21,12 +21,23 @@
     // objectName["property"]
     if (!(obj.a === obj['a'])) console.log(false);
     // 遍历对象键值
-    for (k in obj) 1
+    for (let k in obj) 1
     // 添加属性 objectName.newProperty = value
     obj.b  = 'B'
     // 删除属性 delete objectName.property
     delete obj.b
 }
 { // 对象方法
-    
+    class say { noSay = () => 1 }
+    (new say()).noSay()
+}
+{ // 显示对象
+    const obj = {a: 'A', b: 'B', c: 'C'}
+    // 循环中拼接
+    let text = ""
+    for (let k in obj) text += obj[k] + " "
+    // 将对象转换成值组成的数组 Object.values()
+    let arr = Object.values(obj)
+    // 进行字符串化 JSON.stringify()
+    let str = JSON.stringify(obj)
 }
