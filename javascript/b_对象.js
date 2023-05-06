@@ -6,13 +6,17 @@
     obj_2.a = 'A'
     obj_2.b = 'B'
     // 定义对象构造器，通过创建构造类型的对象
-    class toUp {
-        constructor(aUp, bUp) {
-            this.a = aUp
-            this.b = bUp
-        }
+    // class toUp {
+    //     constructor(aUp, bUp) {
+    //         this.a = aUp
+    //         this.b = bUp
+    //     }
+    // }
+    function ToUp(aUp, bUp) {
+        this.a = aUp
+        this.b = bUp
     }
-    let obj_3 = new toUp('A', 'B')
+    let obj_3 = new ToUp('A', 'B')
     if (!(obj_1.a == obj_3.a)) console.log(false);
 }
 { // 对象属性
@@ -41,3 +45,19 @@
     // 进行字符串化 JSON.stringify()
     let str = JSON.stringify(obj)
 }
+{ // 对象访问器
+    // 允许定义 Getter 与 Setter（被计算的属性）
+    // 优势是：更简洁的语法、与属性语法相同、更好的数据质量、更利于后台工作
+    let obj = {
+        count: 0,
+        get increment() { this.count++ },
+        get decrement() { this.count-- }
+    }
+    obj.increment
+    obj.decrement
+    if (obj.count == 0) 1
+}
+{ // 对象原型
+    // prototype 属性允许为对象构造器添加新属性
+    console.log((new Object()).prototype);
+}t
