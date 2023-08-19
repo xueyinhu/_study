@@ -85,19 +85,33 @@ NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署�
      * Buffer.from(buffer)： 复制传入的 Buffer 实例的数据，并返回一个新的 Buffer 实例
      * Buffer.from(string[, encoding])： 返回一个被 string 的值初始化的新的 Buffer 实例
      */
-     // 创建一个长度为 10，且用 1 填充地 Buffer
-     const buf_1 = Buffer.alloc(10)
-     // 创建一个长度为 10，且未初始化的 Buffer，速度相对更快
-     // 需要使用 fill() 方法或 write() 重写数据
-     const buf_2 = Buffer.allocUnsafe(10)
-     // 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer
-     const buf_3 = Buffer.from([1, 2, 3])
-     // 创建一个包含 UTF-8 字节 [0x74, 0xc3, 0xa9, 0x73, 0x74] 的 Buffer
-     const buf_4 = Buffer.from('tést')
-     // 创建一个包含 Latin-1 字节 [0x74, 0xe9, 0x73, 0x74] 的 Buffer
-     const buf_5 = Buffer.from('tést', 'latin1')
+    // 创建一个长度为 10，且用 1 填充地 Buffer
+    const buf_1 = Buffer.alloc(10)
+    // 创建一个长度为 10，且未初始化的 Buffer，速度相对更快
+    // 需要使用 fill() 方法或 write() 重写数据
+    const buf_2 = Buffer.allocUnsafe(10)
+    // 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer
+    const buf_3 = Buffer.from([1, 2, 3])
+    // 创建一个包含 UTF-8 字节 [0x74, 0xc3, 0xa9, 0x73, 0x74] 的 Buffer
+    const buf_4 = Buffer.from('tést')
+    // 创建一个包含 Latin-1 字节 [0x74, 0xe9, 0x73, 0x74] 的 Buffer
+    const buf_5 = Buffer.from('tést', 'latin1')
 
-     // 写入缓冲区
-     
+    // 写入缓冲区
+    /** buf.write(string[, offset[, length]][, encoding])
+     * string - 写入缓冲区的字符串
+     * offset - 缓冲区开始写入的索引值，默认为 0 
+     * length - 写入的字节数，默认为 buffer.length
+     * encoding - 使用的编码。默认为 'utf8'
+     */
+    len = buf.write('test')
+
+    // 从缓冲区读取数据
+    /** buf.toString([encoding[, start[, end]]])
+     * encoding - 使用的编码。默认为 'utf8' 。
+     * start - 指定开始读取的索引位置，默认为 0。
+     * end - 结束位置，默认为缓冲区的末尾。
+     */
+    console.log(buf.toString(undefined, 0, 5))
     ```
 
