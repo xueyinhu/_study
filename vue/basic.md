@@ -16,9 +16,19 @@
 
 **声明式**地将其组件实例的数据绑定到呈现的 DOM 上。
 
-每个绑定仅支持**单一表达式**，也就是一段能够被求值的 JavaScript 代码。
+模板绑定仅支持单一表达式，也就是一段能够被求值的 JavaScript 代码。
+模板中的表达式将被沙盒化，仅能够访问到有限的全局对象列表。可以自行在 `app.config.globalProperties` 上显式地添加它们。
 
-模板中的表达式将被**沙盒化**，仅能够访问到有限的全局对象列表。可以自行在 `app.config.globalProperties` 上显式地添加它们。
+指令 attribute 的期望值为一个 JavaScript 表达式 (除了少数几个例外，即 v-for、v-on 和 v-slot)。
+动态参数：同样在指令参数上也可以使用一个 JavaScript 表达式，需要包含在一对方括号内。
+动态参数中表达式的值应当是一个字符串，或者是 null。
+动态参数表达式因为某些字符的缘故有一些语法限制，比如空格和引号。
+如果你需要传入一个复杂的动态参数，我们推荐使用计算属性替换复杂的表达式。
+当使用 DOM 内嵌模板 (直接写在 HTML 文件里的模板) 时，我们需要避免在名称中使用大写字母，因为浏览器会强制将其转换为小写。
+
+修饰符是以点开头的特殊后缀，表明指令需要以一些特殊的方式被绑定。
+
+**Name:Argument.Modifiers=Value**
 
 Vue 提供了许多[**内置指令**](https://cn.vuejs.org/api/built-in-directives.html)。
 
@@ -28,7 +38,9 @@ Vue 提供了许多[**内置指令**](https://cn.vuejs.org/api/built-in-directiv
 |原始 HTML|v-html 指令|在网站上动态渲染任意 HTML 是非常危险的，因为这非常容易造成 XSS 漏洞|
 |Attribute 绑定|v-bind 指令|1. 布尔型 Attribute 绑定为真值或一个空字符串，会被认为为真 <br/> 2. 可以动态绑定多个值|
 
+---
 
+#### 响应式基础
 
 
 
