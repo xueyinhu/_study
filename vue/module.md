@@ -135,24 +135,33 @@ export default {
 </template>
 ```
 
+---
 
+#### 透传 Attributes
 
+“透传 attribute”指的是传递给一个组件，却没有被该组件声明为 props 或 emits 的 attribute 或者 v-on 事件监听器。最常见的例子就是 class、style 和 id。当一个组件以单个元素为根作渲染时，透传的 attribute 会自动被添加到根元素上。
 
+如果你不想要一个组件自动地继承 attribute，你可以在组件选项中设置 inheritAttrs: false。
 
+这些透传进来的 attribute 可以在模板的表达式中直接用 $attrs 访问到。这个 $attrs 对象包含了除组件所声明的 props 和 emits 之外的所有其他 attribute，例如 class，style，v-on 监听器等等。
 
+和单根节点组件有所不同，有着多个根节点的组件没有自动 attribute 透传行为。如果 $attrs 没有被显式绑定，将会抛出一个运行时警告。
 
+---
 
+#### 插槽
 
+<slot> 元素是一个插槽出口 (slot outlet)，标示了父元素提供的插槽内容 (slot content) 将在哪里被渲染。
 
+父组件模板中的表达式只能访问父组件的作用域；子组件模板中的表达式只能访问子组件的作用域。插槽内容可以访问到父组件的数据作用域，因为插槽内容本身是在父组件模板中定义的。
 
+如果我们想在父组件没有提供任何插槽内容时在 `<button>` 内渲染“Submit”，只需要将“Submit”写在 `<slot>` 标签之间来作为默认内容。
 
+<slot> 元素可以有一个特殊的 attribute name，用来给各个插槽分配唯一的 ID，以确定每一处要渲染的内容。带 name 的插槽被称为具名插槽 (named slots)。没有提供 name 的 <slot> 出口会隐式地命名为“default”。要为具名插槽传入内容，我们需要使用一个含 v-slot 指令的 `<template>` 元素，并将目标插槽的名字传给该指令。v-slot 有对应的简写 #，因此 `<template v-slot:header>` 可以简写为 `<template #header>`。
 
+动态指令参数在 v-slot 上也是有效的。
 
-
-
-
-
-
+某些场景下插槽的内容可能想要同时使用父组件域内和子组件域内的数据。像对组件传递 props 那样，向一个插槽的出口上传递 attributes。
 
 
 
