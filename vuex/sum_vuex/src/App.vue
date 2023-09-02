@@ -1,26 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>当前求和为: {{$store.state.sum}}</h1>
+    <select v-model.number="n">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+    <button @click="incrementOdd">当前求和为奇数再加</button>
+    <button @click="incrementWait">等一等再加</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: 'CountVueX',
+  data() {
+    return {
+      n: 1
+    }
+  },
+  methods: {
+    increment() {
+      this.$store.dispatch('increment', this.n)
+    },
+    decrement() {},
+    incrementOdd() {},
+    incrementWait() {
+      setTimeout(()=>{
+
+      })
+    }
+  },
+  mounted() {
+    console.log(this);
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  button {
+    margin-left: 5px;
+  }
 </style>
