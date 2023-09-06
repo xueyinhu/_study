@@ -1,7 +1,4 @@
-import { createApp } from 'vue'
-import Vuex from 'vuex'
-
-createApp().use(Vuex)
+import {createStore} from 'vuex'
 
 const state = {
     sum: 0
@@ -14,11 +11,10 @@ const actions = {
 const mutations = {
     INCREMENT(state, value) {
         state.sum += value
-        console.log(state.sum);
     }
 }
 
-export default new Vuex.Store({
+export default createStore({
     state,
     actions,
     mutations

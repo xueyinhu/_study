@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>当前求和为: {{$store.state.sum}}</h1>
+    <h1>当前求和为: {{sum_x}}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -25,12 +25,19 @@ export default {
     increment() {
       this.$store.dispatch('increment', this.n)
     },
-    decrement() {},
+    decrement() {
+      console.log(this.$store.state.sum);
+    },
     incrementOdd() {},
     incrementWait() {
       setTimeout(()=>{
 
       })
+    }
+  },
+  computed: {
+    sum_x() {
+      return this.$store.state.sum
     }
   },
   mounted() {
